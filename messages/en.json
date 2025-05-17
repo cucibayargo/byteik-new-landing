@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "menu": {
+      "home": "Home",
+      "whyus": "Why Us ?",
+      "solutions": "Solutions",
+      "contact": "Contact",
+      "letstalk": "Let's Talk"
+    },
+    "hero": {
+      "title1": "Where Indonesian Heritage Meets",
+      "title2": "Modern Technology",
+      "summarize": "We don’t just build software—we solve real business problems. By combining cultural understanding with modern tech practices, we deliver systems that are stable, scalable, and built to support your long-term success.",
+      "schedule": "Schedule a call"
+    },
+    "whyus" : {
+      "title1": "Why We're the Right Solution for Your Digital Product 💡",
+      "subtitle1": "From Idea to Execution",
+      "summarize1": "You don’t need multiple vendors. We handle everything, from initial concept, product strategy, and user experience design to development, testing, and launch. One team, one smooth process.",
+      "subtitle2": "Flexible Collaboration That Fits You",
+      "summarize2": "We know every business is different — that’s why we offer flexible ways to work together. Whether it’s a one-time project, ongoing support, or a long-term partnership, you can choose what fits your goals, timeline, and budget. We adapt to your needs, so you get the right solution without compromise."
+    },
+    "portofolio": {
+      "title1": "What We’ve Recently Built",
+      "portotitle1": "Warehouse Management System (ERP) - Web System",
+      "porto1": "A system that manages inventory levels, tracks stock movement in and out of the warehouse, handles purchase orders, and provides real-time data for monitoring and reporting. It also includes role-based access to control user permissions.",
+      "portotitle2": "Cashier Laundry Application - (Web + SPA)",
+      "porto2": "A web-based single-page application for managing daily laundry transactions. It supports order input, price calculation, customer tracking, payment processing, and receipt generation — all in a clean, responsive interface for desktop or tablet use.",
+      "portotitle3": "The Ritz Media – Landing Page",
+      "porto3": "A responsive landing page designed to showcase Ritz Media’s services in digital entertainment and product development. It highlights the company’s expertise through a bold hero section, detailed service breakdowns, client highlights, and storytelling elements — all crafted to reflect the brand’s creative energy and industry impact.",  
+      "portotitle4": "Hilink – Landing Page",
+      "porto4": "A responsive landing page created for the Hilink navigation app.  The page highlights the app’s offline map features, adventure-friendly design, and core benefits — crafted to attract outdoor enthusiasts and drive app downloads."
+    },
+    "service": {
+      "title1": "Our Services",
+      "service1": "Buat sistem web custom sesuai kebutuhan bisnis, seperti ERP, inventory, atau aplikasi kasir.",
+      "service2": "Tingkatkan operasional dengan otomasi, tools cloud, dan workflow digital yang bisa berkembang bersama bisnis kamu.",
+      "service3": "Kembangkan aplikasi web dan mobile cross-platform yang handal dengan performa dan kemudahan penggunaan yang fokus.",
+      "service4": "Buat landing page responsif yang jelas menampilkan produk digital, aplikasi, atau kampanye kamu."
+    },
+    "stack": {
+      "title1": "Technologies We Use"
+    }
+  }
+}

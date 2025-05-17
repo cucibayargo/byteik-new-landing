@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "menu": {
+      "home": "Beranda",
+      "whyus": "Mengapa Kami?",
+      "solutions": "Solusi",
+      "contact": "Kontak",
+      "letstalk": "Hubungi Kami"
+    },
+    "hero": {
+      "title1": "Teknologi Modern dengan Sentuhan",
+      "title2": "Budaya Indonesia",
+      "summarize": "Kami tidak sekadar membuat perangkat lunak—kami menyelesaikan masalah bisnis yang nyata. Dengan menggabungkan pemahaman budaya dan praktik teknologi modern, kami menghadirkan sistem yang stabil, skalabel, dan dirancang untuk mendukung kesuksesan jangka panjang Anda.",
+      "schedule": "Jadwalkan Sesi Konsultasi"
+    },
+    "whyus" : {
+      "title1": "Mengapa Kami Adalah Solusi yang Tepat untuk Produk Digital Anda 💡",
+      "subtitle1": "Dari Ide hingga Eksekusi",
+      "summarize1": "Anda tidak perlu banyak vendor. Kami menangani semuanya, mulai dari konsep awal, strategi produk, desain pengalaman pengguna, hingga pengembangan, pengujian, dan peluncuran. Satu tim, satu proses yang mulus.",
+      "subtitle2": "Kolaborasi Fleksibel",
+      "summarize2": "Setiap bisnis punya kebutuhan yang berbeda. Karena itu, kami menawarkan cara kerja yang fleksibel — mulai dari proyek sekali jalan, perawatan rutin, hingga kerja sama jangka panjang. Pilih sesuai kebutuhan, waktu, dan anggaran Anda."
+    },
+    "portofolio": {
+      "title1": "Hasil Karya Terbaru Kami",
+      "portotitle1": "Sistem Manajemen Gudang (ERP) - Sistem Web",
+      "porto1": "Sistem yang mengelola tingkat persediaan, melacak pergerakan stok masuk dan keluar gudang, menangani pesanan pembelian, serta menyediakan data real-time untuk pemantauan dan pelaporan. Sistem ini juga dilengkapi dengan akses berbasis peran untuk mengatur izin pengguna.",
+      "portotitle2": "Aplikasi Kasir Laundry - (Web + SPA)",
+      "porto2": "Aplikasi web berbasis single-page untuk mengelola transaksi laundry harian. Mendukung input pesanan, perhitungan harga, pelacakan pelanggan, pemrosesan pembayaran, dan pembuatan struk — semua dalam antarmuka yang bersih dan responsif untuk penggunaan di desktop atau tablet.",
+      "portotitle3": "The Ritz Media – Landing Page",
+      "porto3": "Situs web responsif yang dirancang untuk menampilkan layanan The Ritz Media dalam bidang hiburan digital dan pengembangan produk. Menonjolkan keahlian perusahaan melalui bagian hero yang menarik, penjabaran layanan secara detail, sorotan klien, dan elemen storytelling — semuanya dirancang untuk mencerminkan energi kreatif dan dampak mereka di industri.",
+      "portotitle4": "Hilink – Landing Page",
+      "porto4": "Landing page responsif yang dibuat untuk aplikasi navigasi Hilink. Halaman ini menyoroti fitur peta offline, desain yang ramah untuk petualangan, dan manfaat utama — dirancang untuk menarik para pecinta aktivitas luar ruang dan mendorong unduhan aplikasi."
+    },
+    "service": {
+      "title1": "Layanan Kami",
+      "service1": "Buat sistem web custom sesuai kebutuhan bisnis, seperti ERP, inventory, atau aplikasi kasir.",
+      "service2": "Tingkatkan operasional dengan otomasi, tools cloud, dan workflow digital yang bisa berkembang bersama bisnis kamu.",
+      "service3": "Kembangkan aplikasi web dan mobile cross-platform yang handal dengan performa dan kemudahan penggunaan yang fokus.",
+      "service4": "Buat landing page responsif yang jelas menampilkan produk digital, aplikasi, atau kampanye kamu."
+    },
+    "stack": {
+      "title1": "Teknologi yang kita gunakan"
+    }
+  }
+}
