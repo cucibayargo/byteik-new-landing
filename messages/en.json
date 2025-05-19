@@ -4,7 +4,7 @@
       "home": "Home",
       "whyus": "Why Us ?",
       "solutions": "Solutions",
-      "contact": "Contact",
+      "portfolio": "Portfolio",
       "letstalk": "Let's Talk"
     },
     "hero": {
@@ -33,13 +33,38 @@
     },
     "service": {
       "title1": "Our Services",
-      "service1": "Buat sistem web custom sesuai kebutuhan bisnis, seperti ERP, inventory, atau aplikasi kasir.",
-      "service2": "Tingkatkan operasional dengan otomasi, tools cloud, dan workflow digital yang bisa berkembang bersama bisnis kamu.",
-      "service3": "Kembangkan aplikasi web dan mobile cross-platform yang handal dengan performa dan kemudahan penggunaan yang fokus.",
-      "service4": "Buat landing page responsif yang jelas menampilkan produk digital, aplikasi, atau kampanye kamu."
+      "service1": "This service focuses on building software in the form of web applications that are accessible via browsers without installation. Ideal for internal company systems, admin dashboards, data management platforms, and other business solutions that require fast, secure, and scalable access.",
+      "service2": "We help businesses move from manual processes to digital systems through workflow automation, system integration, and document digitization—enabling greater efficiency and competitiveness in the modern era.",
+      "service3": "Mobile app development for Android and iOS with a focus on performance, attractive UI, and user-friendliness. Perfect for businesses aiming to engage users directly on their mobile devices.",
+      "service4": "Design and development of landing pages aimed at capturing attention and driving specific actions like signups, purchases, or app downloads. Commonly used in marketing campaigns and product launches."
     },
     "stack": {
-      "title1": "Technologies We Use"
+      "title1": "Technologies We Use",
+      "title2": "with many more to come"
+    },
+    "cta": {
+      "title1": "Transform Ideas into Reality",
+      "summarize1": "Collaborate with our team to craft the next big thing — together.",
+      "schedule": "Schedule a call",
+      "form": {
+        "title1": "Get In Touch",
+        "summarize1": "Can’t schedule a call? Send us a message — our team will get back to you as soon as possible.",
+        "field1": "Name",
+        "field2": "Email",
+        "field3": "Message",
+        "field3placeholder": "Briefly describe your business or how we can help",
+        "policy": "By submitting this form, you agree to our",
+        "policyButton": "Privacy Policy",
+        "button": "Send Message"
+      }
+    },
+    "footer": {
+      "summarize": "Making technology simple, so you can focus on what matters.",
+      "service": "Services",
+      "about": "About Us",
+      "contact": "Keep in Touch",
+      "whyus": "Why Us ?",
+      "stack": "Our Technologies"
     }
   }
 }
