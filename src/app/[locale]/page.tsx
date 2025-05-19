@@ -37,12 +37,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen overflow-hidden bg-white">
       <header
-        className={`z-100 fixed top-0 w-full transition-colors duration-300 ${
+        className={`z-100 fixed top-0 w-full transition-colors duration-100 ${
           isScrolledOrHash ? 'bg-white shadow-md' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center md:justify-between">
             <Link href="/">
               <Image 
                     src="/images/logo.svg" 
@@ -103,7 +103,7 @@ export default function HomePage() {
 
               {/* Left side (text content) */}
               <div className="w-full lg:w-1/2 flex flex-col items-center md:items-start">
-                <h1 className="text-center md:text-left text-3xl md:text-4xl w-md">
+                <h1 className="text-center md:text-left text-3xl md:text-4xl w-sm md:w-md">
                   {t('hero.title1')}
                 </h1>
                 <h1 className="text-center md:text-left text-3xl md:text-5xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FFAA18] to-[#ECD047]">
