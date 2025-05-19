@@ -14,7 +14,6 @@ export default function HomePage() {
   useEffect(() => {
     const checkState = () => {
       const scrolled = window.scrollY > 10;
-      const hasHash = window.location.hash.length > 0;
   
       // If at top, ignore hash and make it transparent
       if (!scrolled) {
