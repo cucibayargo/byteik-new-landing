@@ -55,7 +55,12 @@
         "field3placeholder": "Briefly describe your business or how we can help",
         "policy": "By submitting this form, you agree to our",
         "policyButton": "Privacy Policy",
-        "button": "Send Message"
+        "button": "Send Message",
+        "sending": "Sending...",
+        "requiredMsg": "Oops! Please fill in all the fields before sending.",
+        "success": "Thanks! I'll catch you soon 😊",
+        "error": "Uh-oh, I couldn’t send your message. Please try again later or email info.byteik@gmail.com.",
+        "emailInvalid": "Please enter a valid email address."
       }
     },
     "footer": {

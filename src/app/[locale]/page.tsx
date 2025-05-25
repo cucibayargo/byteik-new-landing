@@ -2,91 +2,157 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
-  const router = useRouter();
   const [isScrolledOrHash, setIsScrolledOrHash] = useState(false);
+  const [currentHash, setCurrentHash] = useState('');
 
   useEffect(() => {
     const checkState = () => {
       const scrolled = window.scrollY > 10;
-  
-      // If at top, ignore hash and make it transparent
       if (!scrolled) {
         setIsScrolledOrHash(false);
       } else {
         setIsScrolledOrHash(true);
       }
+    
+      const sectionIds = ['#whyus', '#services', '#portfolio', '#home'];
+      const scrollMidpoint = window.scrollY + window.innerHeight / 2;
+      let matchedHash: string | null = null;
+    
+      for (const id of sectionIds) {
+        const el = document.querySelector(id);
+        if (!el) continue;
+    
+        const element = el as HTMLElement;
+        const top = element.offsetTop;
+        const bottom = top + element.offsetHeight;
+    
+        if (scrollMidpoint >= top && scrollMidpoint <= bottom) {
+          matchedHash = id;
+          break;
+        }
+      }
+      
+      if (matchedHash && matchedHash !== currentHash) {
+        history.replaceState(null, '', matchedHash);
+        setCurrentHash(matchedHash);
+      }
     };
-  
-    checkState(); // Run on load
+    
+    checkState();
     window.addEventListener('scroll', checkState);
     window.addEventListener('hashchange', checkState);
-  
+
     return () => {
       window.removeEventListener('scroll', checkState);
       window.removeEventListener('hashchange', checkState);
     };
-  }, []);  
-    
+  }, []);
+
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const isFormValid = form.name.trim() && form.email.trim() && form.message.trim();
+  const [alert, setAlert] = useState({ message: '', type: '' });
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubmit = async () => {
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setAlert({ message: t('cta.form.requiredMsg'), type: 'error' });
+      return;
+    }
+
+    if (!validateEmail(form.email.trim())) {
+      setAlert({ message: t('cta.form.emailInvalid'), type: 'error' });
+      return;
+    }
+
+    setLoading(true);
+    setAlert({ message: '', type: '' }); // clear previous alert
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setAlert({ message: t('cta.form.success'), type: 'success' });
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setAlert({ message: t('cta.form.error'), type: 'error' });
+      }
+    } catch (err) {
+      setAlert({ message: t('cta.form.error'), type: 'error' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen overflow-hidden bg-white">
       <header
-        className={`z-100 fixed top-0 w-full transition-colors duration-100 ${
-          isScrolledOrHash ? 'bg-white shadow-md' : 'bg-transparent'
-        }`}
+        className={`z-100 fixed top-0 w-full transition-colors duration-100 ${isScrolledOrHash ? 'bg-white shadow-md' : 'bg-transparent'
+          }`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-center md:justify-between">
             <Link href="/">
-              <Image 
-                    src="/images/logo.svg" 
-                    alt="Company Logo Byteik" 
-                    width={160} 
-                    height={41} 
-                    style={{ height: '41px', width: 'auto' }} 
-                />
+              <Image
+                src="/images/logo.svg"
+                alt="Company Logo Byteik"
+                width={160}
+                height={41}
+                style={{ height: '41px', width: 'auto' }}
+              />
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
               <Link
                 href="/"
-                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                className={`text-sm font-medium transition-colors ${currentHash === '' || currentHash === '#home' ? 'text-(--base-color) font-bold' : 'text-gray-600 hover:text-black'
+                  }`}
               >
                 {t('menu.home')}
               </Link>
               <Link
                 href="#whyus"
-                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                className={`text-sm font-medium transition-colors ${currentHash === '#whyus' ? 'text-(--base-color) font-bold' : 'text-gray-600 hover:text-black'
+                  }`}
               >
                 {t('menu.whyus')}
               </Link>
               <Link
-                href="#services"
-                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
-              >
-                {t('menu.solutions')}
-              </Link>
-              <Link
                 href="#portfolio"
-                className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                className={`text-sm font-medium transition-colors ${currentHash === '#portfolio' ? 'text-(--base-color) font-bold' : 'text-gray-600 hover:text-black'
+                  }`}
               >
                 {t('menu.portfolio')}
+              </Link>
+              <Link
+                href="#services"
+                className={`text-sm font-medium transition-colors ${currentHash === '#services' ? 'text-(--base-color) font-bold' : 'text-gray-600 hover:text-black'
+                  }`}
+              >
+                {t('menu.solutions')}
               </Link>
             </nav>
 
             <div className="flex items-center space-x-4">
-              <button
+              <a
                 className="hidden md:flex bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold px-6 py-2 rounded-lg cursor-pointer"
-                onClick={() => {
-                  router.push("#contact");
-                }}
+                href='https://calendly.com/info-byteik/schedule-a-consultation'
+                target='_blank'
               >
                 {t('menu.letstalk')}
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -111,14 +177,13 @@ export default function HomePage() {
                 <p className="text-center md:text-left text-sm mb-6 w-full md:w-[68%]">
                   {t('hero.summarize')}
                 </p>
-                <button
+                <a
                   className="bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold px-6 py-2 rounded-lg cursor-pointer"
-                  onClick={() => {
-                    router.push("#contact");
-                  }}
+                  href='https://calendly.com/info-byteik/schedule-a-consultation'
+                  target='_blank'
                 >
                   {t('hero.schedule')}
-                </button>
+                </a>
               </div>
 
               {/* Right side (video) */}
@@ -156,7 +221,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <img src="/images/workflow.svg" alt="how-byteik-works-image" />
+              <Image src="/images/workflow.svg" alt="how byteik works image" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
             </div>
           </div>
         </section>
@@ -174,7 +239,7 @@ export default function HomePage() {
                   <p className='text-sm mt-1 text-gray-500'>PT. Lapan Ecogreen Globalindo</p>
                   <p className='mt-6 text-sm text-gray-600'>{t('portofolio.porto1')}</p>
                 </div>
-                <img className="mt-6" src="/images/image-portofolio1.svg" alt="Image Portofolio ERP from Byteik" />
+                <Image src="/images/image-portofolio1.svg" alt="Image Portofolio ERP from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
               <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFEFFE] rounded-none md:rounded-lg flex flex-col justify-between">
                 <div>
@@ -182,7 +247,7 @@ export default function HomePage() {
                   <p className='text-sm mt-1 text-gray-500'>Cucibayargo</p>
                   <p className='mt-6 text-sm text-gray-600'>{t('portofolio.porto2')}</p>
                 </div>
-                <img className="mt-6" src="/images/image-portofolio2.svg" alt="Image Portofolio Cashier Application from Byteik" />
+                <Image src="/images/image-portofolio2.svg" alt="Image Portofolio Cashier Application from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
               <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFF9FE] rounded-none md:rounded-lg flex flex-col justify-between">
                 <div>
@@ -190,7 +255,7 @@ export default function HomePage() {
                   <p className='text-sm mt-1 text-gray-500'>The Ritz Media Berlin</p>
                   <p className='mt-6 text-sm text-gray-600'>{t('portofolio.porto3')}</p>
                 </div>
-                <img className="mt-6" src="/images/image-portofolio3.svg" alt="Image Portofolio Landing Page from Byteik" />
+                <Image src="/images/image-portofolio3.svg" alt="Image Portofolio Landing Page from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
               <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFFEF7] rounded-none md:rounded-lg flex flex-col justify-between">
                 <div>
@@ -198,7 +263,7 @@ export default function HomePage() {
                   <p className='text-sm mt-1 text-gray-500'>Hilink</p>
                   <p className='mt-6 text-sm text-gray-600'>{t('portofolio.porto4')}</p>
                 </div>
-                <img className="mt-6" src="/images/image-portofolio4.svg" alt="Image Portofolio Landing Page from Byteik" />
+                <Image src="/images/image-portofolio4.svg" alt="Image Portofolio Landing Page from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
             </div>
           </div>
@@ -276,14 +341,13 @@ export default function HomePage() {
           <div className='mx-auto relative flex flex-col items-center justify-center mt-12 bg-[#FFF0E1] py-12 px-10'>
             <h1 className='text-center font-bold text-xl'>{t('cta.title1')}</h1>
             <h1 className='text-center text-lg text-gray-600 mt-2'>{t('cta.summarize1')}</h1>
-            <button
+            <a
               className="mt-6 bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold px-6 py-2 rounded-lg cursor-pointer"
-              onClick={() => {
-                router.push("#contact");
-              }}
+              href='https://calendly.com/info-byteik/schedule-a-consultation'
+              target='_blank'
             >
               {t('cta.schedule')}
-            </button>
+            </a>
           </div>
         </section>
 
@@ -291,6 +355,16 @@ export default function HomePage() {
           <div className='container mx-auto relative flex flex-col items-center justify-center mt-12 px-10'>
             <h1 className='text-center font-bold text-xl'>{t('cta.form.title1')}</h1>
             <p className='text-sm text-gray-600 mt-2 mb-5'>{t('cta.form.summarize1')}</p>
+            {/* Alert message */}
+            {alert.message && (
+              <div
+                className={`mb-4 w-full max-w-lg px-4 py-3 rounded ${alert.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  }`}
+                role="alert"
+              >
+                {alert.message}
+              </div>
+            )}
             <div className='flex flex-col items-start w-auto'>
               <div className="mb-4 w-full md:w-lg">
                 <div className="flex flex-col gap-1">
@@ -301,8 +375,10 @@ export default function HomePage() {
                     type="text"
                     id="name"
                     className="px-2 py-2 w-full text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition duration-100"
-                    placeholder="Name"
+                    placeholder={t('cta.form.field1')}
                     autoComplete='off'
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                   />
                 </div>
               </div>
@@ -312,11 +388,13 @@ export default function HomePage() {
                     {t('cta.form.field2')}
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     id="email"
                     className="px-2 py-2 w-full text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition duration-100"
                     placeholder="example@yourcompany.com"
                     autoComplete='off'
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
               </div>
@@ -330,15 +408,18 @@ export default function HomePage() {
                     className="px-2 py-2 w-full text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500 transition duration-100 resize-none min-h-[100px]"
                     placeholder={t('cta.form.field3placeholder')}
                     autoComplete="off"
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
                   />
                 </div>
               </div>
               <p className='text-sm text-gray-500'>{t('cta.form.policy')} <a href="#" className='text-blue-400'>{t('cta.form.policyButton')}</a></p>
               <button
                 className="mt-6 w-full py-2 bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold rounded-lg cursor-pointer"
-                onClick={() => {}}
+                onClick={handleSubmit}
+                disabled={loading || !isFormValid}
               >
-                {t('cta.form.button')}
+                {loading ? t('cta.form.sending') : t('cta.form.button')}
               </button>
             </div>
           </div>
@@ -348,12 +429,12 @@ export default function HomePage() {
           <div className='mx-auto container mt-12 px-10 md:px-0 py-10'>
             <div className='flex flex-col md:flex-row'>
               <div className='w-full md:w-1/2'>
-                <Image 
-                    src="/images/logo.svg" 
-                    alt="Company Logo Byteik" 
-                    width={160} 
-                    height={41} 
-                    style={{ height: '41px', width: 'auto' }} 
+                <Image
+                  src="/images/logo.svg"
+                  alt="Company Logo Byteik"
+                  width={160}
+                  height={41}
+                  style={{ height: '41px', width: 'auto' }}
                 />
                 <p className='text-sm w-full md:w-[308px] mt-4'>{t('footer.summarize')}</p>
               </div>
@@ -378,32 +459,32 @@ export default function HomePage() {
                   <h1>{t('footer.contact')}</h1>
                   <div className="flex flex-col gap-1 mt-4">
                     <div className='flex items-center gap-2'>
-                      <Image 
-                          src="/images/ig.webp" 
-                          alt="Company Instagram Byteik" 
-                          width={15} 
-                          height={15} 
-                          style={{ height: '15px', width: 'auto' }} 
+                      <Image
+                        src="/images/ig.svg"
+                        alt="Company Instagram Byteik"
+                        width={15}
+                        height={15}
+                        style={{ height: '15px', width: 'auto' }}
                       />
                       <a href="#whyus" className='text-sm text-gray-500'>@byteik</a>
                     </div>
                     <div className='flex items-center gap-2'>
-                      <Image 
-                          src="/images/linkedin.webp" 
-                          alt="Company Linkedin Byteik" 
-                          width={15} 
-                          height={15} 
-                          style={{ height: '15px', width: 'auto' }} 
+                      <Image
+                        src="/images/linkedin.svg"
+                        alt="Company Linkedin Byteik"
+                        width={15}
+                        height={15}
+                        style={{ height: '15px', width: 'auto' }}
                       />
                       <a href="#whyus" className='text-sm text-gray-500'>Byteik Indonesia</a>
                     </div>
                     <div className='flex items-center gap-2'>
-                      <Image 
-                          src="/images/email.webp" 
-                          alt="Company Email Byteik" 
-                          width={15} 
-                          height={15} 
-                          style={{ height: '15px', width: 'auto' }} 
+                      <Image
+                        src="/images/email.svg"
+                        alt="Company Email Byteik"
+                        width={15}
+                        height={15}
+                        style={{ height: '15px', width: 'auto' }}
                       />
                       <a href="#whyus" className='text-sm text-gray-500'>info.byteik@gmail.com</a>
                     </div>

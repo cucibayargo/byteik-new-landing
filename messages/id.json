@@ -55,7 +55,12 @@
         "field3placeholder": "Tuliskan ringkas bisnis Anda atau apa yang bisa kami bantu",
         "policy": "Dengan mengirim formulir ini, kamu menyetujui Kebijakan",
         "policyButton": "Privasi kami",
-        "button": "Kirim Pesan"
+        "button": "Kirim Pesan",
+        "sending": "Mengirim...",
+        "requiredMsg": "Ups! Tolong isi semua kolom dulu ya sebelum kirim.",
+        "success": "Terima Kasih, Akan segera kami hubungi 😊",
+        "error": "Waduh, pesannya gak terkirim. Coba lagi nanti atau email ke info.byteik@gmail.com ya.",
+        "emailInvalid": "Email tidak valid. Mohon cek kembali."
       }
     },
     "footer": {
