@@ -91,6 +91,7 @@ export default function HomePage() {
         setAlert({ message: t('cta.form.error'), type: 'error' });
       }
     } catch (err) {
+      console.log(err);
       setAlert({ message: t('cta.form.error'), type: 'error' });
     } finally {
       setLoading(false);
