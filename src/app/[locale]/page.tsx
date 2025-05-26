@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-
+import { usePathname, useRouter } from 'next/navigation';
 export default function HomePage() {
   const t = useTranslations('HomePage');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolledOrHash, setIsScrolledOrHash] = useState(false);
   const [currentHash, setCurrentHash] = useState('');
 
@@ -18,31 +19,31 @@ export default function HomePage() {
       } else {
         setIsScrolledOrHash(true);
       }
-    
-      const sectionIds = ['#whyus', '#services', '#portfolio', '#home'];
+
+      const sectionIds = ['#whyus', '#services', '#portfolio', '#home', '#technologies'];
       const scrollMidpoint = window.scrollY + window.innerHeight / 2;
       let matchedHash: string | null = null;
-    
+
       for (const id of sectionIds) {
         const el = document.querySelector(id);
         if (!el) continue;
-    
+
         const element = el as HTMLElement;
         const top = element.offsetTop;
         const bottom = top + element.offsetHeight;
-    
+
         if (scrollMidpoint >= top && scrollMidpoint <= bottom) {
           matchedHash = id;
           break;
         }
       }
-      
+
       if (matchedHash && matchedHash !== currentHash) {
         history.replaceState(null, '', matchedHash);
         setCurrentHash(matchedHash);
       }
     };
-    
+
     checkState();
     window.addEventListener('scroll', checkState);
     window.addEventListener('hashchange', checkState);
@@ -98,6 +99,24 @@ export default function HomePage() {
     }
   };
 
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const currentLocale = useLocale();
+
+  const locales = ['en', 'id']; // Add more as needed
+
+  const handleChangeLanguage = (locale: string) => {
+    const [basePath, hash] = pathname.split('#');
+
+    const segments = basePath.split('/');
+    segments[1] = locale; // replace /en or /id
+
+    const newPath = segments.join('/') + (hash ? `#${hash}` : '');
+
+    router.replace(newPath);
+  };
+
   return (
     <div className="min-h-screen overflow-hidden bg-white">
       <header
@@ -105,8 +124,9 @@ export default function HomePage() {
           }`}
       >
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-center md:justify-between">
-            <Link href="/">
+          <div className="relative flex items-center justify-center md:justify-between">
+            {/* Centered logo */}
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 md:static md:transform-none">
               <Image
                 src="/images/logo.svg"
                 alt="Company Logo Byteik"
@@ -115,6 +135,16 @@ export default function HomePage() {
                 style={{ height: '41px', width: 'auto' }}
               />
             </Link>
+
+            {/* Mobile menu icon (shown only on mobile) */}
+            <div className="ml-auto md:hidden">
+              <button onClick={() => setMobileMenuOpen(true)}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                </svg>
+              </button>
+            </div>
+
             <nav className="hidden md:flex items-center space-x-8">
               <Link
                 href="/"
@@ -144,9 +174,34 @@ export default function HomePage() {
               >
                 {t('menu.solutions')}
               </Link>
+              <Link
+                href="#technologies"
+                className={`text-sm font-medium transition-colors ${currentHash === '#technologies' ? 'text-(--base-color) font-bold' : 'text-gray-600 hover:text-black'
+                  }`}
+              >
+                {t('menu.stack')}
+              </Link>
             </nav>
 
             <div className="flex items-center space-x-4">
+              <div className="hidden md:flex items-center gap-2 bg-white border rounded-full px-3 py-1 shadow-sm hover:shadow-md transition cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 w-5 h-5 text-gray-600">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                </svg>
+
+                {locales.map((locale) => (
+                  <button
+                    key={locale}
+                    onClick={() => handleChangeLanguage(locale)}
+                    className={`px-2 py-1 text-sm rounded-full transition cursor-pointer ${currentLocale === locale
+                      ? 'bg-(--base-color) text-white font-semibold'
+                      : 'text-gray-600 hover:bg-gray-200'
+                      }`}
+                  >
+                    {locale.toUpperCase()}
+                  </button>
+                ))}
+              </div>
               <a
                 className="hidden md:flex bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold px-6 py-2 rounded-lg cursor-pointer"
                 href='https://calendly.com/info-byteik/schedule-a-consultation'
@@ -159,6 +214,80 @@ export default function HomePage() {
         </div>
       </header>
 
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-120 bg-[#17316dcc]/90 backdrop-blur-sm">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex justify-end">
+              <button
+                className='text-white font-bold'
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className="flex flex-col items-center justify-center h-[80vh] space-y-8">
+              <Link
+                href="#home"
+                className={`text-lg font-medium ${currentHash === '' || currentHash === '#home' ? 'text-(--base-color) font-bold' : 'text-white'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('menu.home')}
+              </Link>
+              <Link
+                href="#whyus"
+                className={`text-lg font-medium ${currentHash === '' || currentHash === '#whyus' ? 'text-(--base-color) font-bold' : 'text-white'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('menu.whyus')}
+              </Link>
+              <Link
+                href="#portfolio"
+                className={`text-lg font-medium ${currentHash === '' || currentHash === '#portfolio' ? 'text-(--base-color) font-bold' : 'text-white'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('menu.portfolio')}
+              </Link>
+              <Link
+                href="#services"
+                className={`text-lg font-medium ${currentHash === '' || currentHash === '#services' ? 'text-(--base-color) font-bold' : 'text-white'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('menu.solutions')}
+              </Link>
+              <Link
+                href="#technologies"
+                className={`text-lg font-medium ${currentHash === '' || currentHash === '#technologies' ? 'text-(--base-color) font-bold' : 'text-white'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('menu.stack')}
+              </Link>
+              <div className="flex items-center gap-2 bg-white border rounded-full px-3 py-1 shadow-sm hover:shadow-md transition cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 w-5 h-5 text-gray-600">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+                </svg>
+
+                {locales.map((locale) => (
+                  <button
+                    key={locale}
+                    onClick={() => handleChangeLanguage(locale)}
+                    className={`px-2 py-1 text-sm rounded-full transition cursor-pointer ${currentLocale === locale
+                      ? 'bg-(--base-color) text-white font-semibold'
+                      : 'text-gray-600 hover:bg-gray-200'
+                      }`}
+                  >
+                    {locale.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
+
       <main>
         <div className="bg-gradient-to-b from-[#FFF0D7] to-[#ffffff]">
           <section id="home" className="relative overflow-hidden pb-12 md:pb-[12rem]">
@@ -169,7 +298,7 @@ export default function HomePage() {
 
               {/* Left side (text content) */}
               <div className="w-full lg:w-1/2 flex flex-col items-center md:items-start">
-                <h1 className="text-center md:text-left text-3xl md:text-4xl w-sm md:w-md">
+                <h1 className="text-center md:text-left text-2xl md:text-4xl w-sm md:w-md">
                   {t('hero.title1')}
                 </h1>
                 <h1 className="text-center md:text-left text-3xl md:text-5xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FFAA18] to-[#ECD047]">
@@ -204,7 +333,7 @@ export default function HomePage() {
             </div>
           </section>
         </div>
-        <section id="whyus">
+        <section id="whyus" className="scroll-mt-25">
           <div className='relative z-10 container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8'>
             <div className="w-full md:w-1/2">
               <h1 className='text-center md:text-left text-xl font-bold w-full lg:w-[55%]'>
@@ -227,7 +356,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="portfolio">
+        <section id="portfolio" className="scroll-mt-25">
           <div className='container mx-auto'>
             <div className='flex flex-col items-center w-full mt-16'>
               <h1 className='text-center font-bold text-xl'>{t('portofolio.title1')}</h1>
@@ -270,7 +399,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="services">
+        <section id="services" className="scroll-mt-25">
           <div className='container mx-auto relative flex flex-col items-center justify-center'>
             <div className='flex flex-col items-center w-full mt-16'>
               <h1 className='text-center font-bold text-xl'>{t('service.title1')}</h1>
@@ -297,7 +426,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="technologies">
+        <section id="technologies" className="scroll-mt-25">
           <div className='container mx-auto relative flex flex-col items-center justify-center'>
             <div className='flex flex-col items-center w-full mt-16'>
               <h1 className='text-center font-bold text-xl'>{t('stack.title1')}</h1>
@@ -352,14 +481,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="contact-form">
+        <section id="contact-form" className="scroll-mt-25">
           <div className='container mx-auto relative flex flex-col items-center justify-center mt-12 px-10'>
             <h1 className='text-center font-bold text-xl'>{t('cta.form.title1')}</h1>
             <p className='text-sm text-gray-600 mt-2 mb-5'>{t('cta.form.summarize1')}</p>
             {/* Alert message */}
             {alert.message && (
               <div
-                className={`mb-4 w-full max-w-lg px-4 py-3 rounded ${alert.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                className={`mb-4 w-full max-w-lg text-center px-4 py-3 rounded ${alert.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                   }`}
                 role="alert"
               >
@@ -414,7 +543,7 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <p className='text-sm text-gray-500'>{t('cta.form.policy')} <a href="#" className='text-blue-400'>{t('cta.form.policyButton')}</a></p>
+              <p className='text-sm text-gray-500'>{t('cta.form.policy')} <a href="https://www.termsfeed.com/live/1c56bf5c-9073-4c40-94cc-e76500708b5b" target='_blank' className='text-blue-400'>{t('cta.form.policyButton')}</a></p>
               <button
                 className="mt-6 w-full py-2 bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold rounded-lg cursor-pointer"
                 onClick={handleSubmit}
@@ -453,7 +582,7 @@ export default function HomePage() {
                   <h1>{t('footer.about')}</h1>
                   <div className="flex flex-col gap-1 mt-4">
                     <a href="#whyus" className='text-sm text-gray-500'>{t('footer.whyus')}</a>
-                    <a href="#stack" className='text-sm text-gray-500'>{t('footer.stack')}</a>
+                    <a href="#technologies" className='text-sm text-gray-500'>{t('footer.stack')}</a>
                   </div>
                 </div>
                 <div className='w-full md:w-[35%]'>
