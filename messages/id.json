@@ -1,5 +1,9 @@
 {
   "HomePage": {
+    "seo": {
+      "title": "Byteik | Solusi Perangkat Lunak Andal & Skalabel",
+      "description": "Byteik mengembangkan perangkat lunak andal yang disesuaikan dengan kebutuhan bisnis Anda, dengan fokus pada kualitas dan skalabilitas jangka panjang."
+    },
     "menu": {
       "home": "Beranda",
       "whyus": "Mengapa Kami?",

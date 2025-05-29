@@ -1,5 +1,9 @@
 {
   "HomePage": {
+    "seo": {
+      "title": "Byteik | Reliable & Scalable Software Solutions",
+      "description": "Byteik develops dependable software tailored to your business needs, focusing on quality, scalability, and long-term value."
+    },
     "menu": {
       "home": "Home",
       "whyus": "Why Us ?",
