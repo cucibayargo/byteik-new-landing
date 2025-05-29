@@ -13,9 +13,9 @@
       "letstalk": "Let's Talk"
     },
     "hero": {
-      "title1": "Where Indonesian Heritage Meets",
-      "title2": "Modern Technology",
-      "summarize": "We don’t just build software—we solve real business problems. By combining cultural understanding with modern tech practices, we deliver systems that are stable, scalable, and built to support your long-term success.",
+      "title1": "Where software solves",
+      "title2": "what’s slowing you down",
+      "summarize": "You’re not looking for more tools. You’re looking for fewer problems. We build software that removes the friction — the delays, the double-work, the “why is this still manual?” If it’s draining time, energy, or money, we’ll help fix it — properly.",
       "schedule": "Schedule a call"
     },
     "whyus" : {
@@ -38,10 +38,14 @@
     },
     "service": {
       "title1": "Our Services",
-      "service1": "This service focuses on building software in the form of web applications that are accessible via browsers without installation. Ideal for internal company systems, admin dashboards, data management platforms, and other business solutions that require fast, secure, and scalable access.",
-      "service2": "We help businesses move from manual processes to digital systems through workflow automation, system integration, and document digitization—enabling greater efficiency and competitiveness in the modern era.",
-      "service3": "Mobile app development for Android and iOS with a focus on performance, attractive UI, and user-friendliness. Perfect for businesses aiming to engage users directly on their mobile devices.",
-      "service4": "Design and development of landing pages aimed at capturing attention and driving specific actions like signups, purchases, or app downloads. Commonly used in marketing campaigns and product launches."
+      "serviceTitle1": "System & Web App Development",
+      "service1": "We build web-based software that runs in any browser — no installs needed. Great for internal tools, dashboards, and data platforms that keep your team efficient, secure, and ready to grow.",
+      "serviceTitle2": "Digital Transformation Solutions",
+      "service2": "We help you ditch manual work by automating workflows, connecting your systems, and digitizing documents. This means less busywork, faster processes, and a more competitive business.",
+      "serviceTitle3": "Mobile App Development",
+      "service3": "Custom mobile apps for Android and iOS that run smoothly and look great. Perfect if you want to reach your customers directly on their phones with an easy, enjoyable experience.",
+      "serviceTitle4": "Landing Page Design & Development",
+      "service4": "We create landing pages that grab attention and get results — whether it’s signing up users, making sales, or launching new products. Ideal for marketing campaigns that need to convert."
     },
     "stack": {
       "title1": "Technologies We Use",

@@ -307,7 +307,7 @@ export default function HomePage() {
                 <h1 className="text-center md:text-left text-2xl md:text-4xl w-sm md:w-md">
                   {t('hero.title1')}
                 </h1>
-                <h1 className="text-center md:text-left text-3xl md:text-5xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FFAA18] to-[#ECD047]">
+                <h1 className="w-full lg:w-[80%] text-center md:text-left text-3xl md:text-5xl font-bold leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FFAA18] to-[#ECD047]">
                   {t('hero.title2')}
                 </h1>
                 <p className="text-center md:text-left text-sm mb-6 w-full md:w-[68%]">
@@ -413,19 +413,19 @@ export default function HomePage() {
             </div>
             <div className='mt-12 w-full md:w-[65%] flex flex-col gap-4 bg-(--soft-base-color) p-10 rounded-lg'>
               <div>
-                <h1 className='text-lg font-bold'>🧩 System & Web App Development</h1>
+                <h1 className='text-lg font-bold'>🧩 {t('service.serviceTitle1')}</h1>
                 <p className='mt-2 text-sm text-gray-600'>{t('service.service1')}</p>
               </div>
               <div>
-                <h1 className='text-lg font-bold'>💡 Digital Transformation Solutions</h1>
+                <h1 className='text-lg font-bold'>💡 {t('service.serviceTitle2')}</h1>
                 <p className='mt-2 text-sm text-gray-600'>{t('service.service2')}</p>
               </div>
               <div>
-                <h1 className='text-lg font-bold'>📱 Mobile App Development</h1>
+                <h1 className='text-lg font-bold'>📱 {t('service.serviceTitle3')}</h1>
                 <p className='mt-2 text-sm text-gray-600'>{t('service.service3')}</p>
               </div>
               <div>
-                <h1 className='text-lg font-bold'>🖥️ Landing Page Design & Development</h1>
+                <h1 className='text-lg font-bold'>🖥️ {t('service.serviceTitle4')}</h1>
                 <p className='mt-2 text-sm text-gray-600'>{t('service.service4')}</p>
               </div>
             </div>
@@ -602,9 +602,9 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <a href="#whyus" className='text-sm text-gray-500'>@byteik</a>
+                      <a href="https://www.instagram.com/byteik" className='text-sm text-gray-500'>@byteik</a>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    {/* <div className='flex items-center gap-2'>
                       <Image
                         src="/images/linkedin.svg"
                         alt="Company Linkedin Byteik"
@@ -612,8 +612,8 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <a href="#whyus" className='text-sm text-gray-500'>Byteik Indonesia</a>
-                    </div>
+                      <a href="https://www.instagram.com/" className='text-sm text-gray-500'>Byteik Indonesia</a>
+                    </div> */}
                     <div className='flex items-center gap-2'>
                       <Image
                         src="/images/email.svg"
@@ -622,7 +622,7 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <a href="#whyus" className='text-sm text-gray-500'>info.byteik@gmail.com</a>
+                      <a href="mailto:info.byteik@gmail.com" className="text-sm text-gray-500">info.byteik@gmail.com</a>
                     </div>
                   </div>
                 </div>

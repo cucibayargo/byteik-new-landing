@@ -13,9 +13,9 @@
       "letstalk": "Hubungi Kami"
     },
     "hero": {
-      "title1": "Teknologi Modern dengan Sentuhan",
-      "title2": "Budaya Indonesia",
-      "summarize": "Kami tidak sekadar membuat perangkat lunak—kami menyelesaikan masalah bisnis yang nyata. Dengan menggabungkan pemahaman budaya dan praktik teknologi modern, kami menghadirkan sistem yang stabil, skalabel, dan dirancang untuk mendukung kesuksesan jangka panjang Anda.",
+      "title1": "Software menyelesaikan",
+      "title2": "apa yang bikin bisnismu lambat",
+      "summarize": "Kami bikin software yang ngilangin ribet — telat, kerja dobel, atau “kok masih harus ngurus manual sih?” Kalau itu nyedot waktu, tenaga, atau duit kamu, kita siap bantu beresin — beneran.",
       "schedule": "Jadwalkan Sesi Konsultasi"
     },
     "whyus" : {
@@ -38,10 +38,14 @@
     },
     "service": {
       "title1": "Layanan Kami",
-      "service1": "Layanan ini mencakup pembangunan perangkat lunak dalam bentuk aplikasi web yang dapat diakses melalui browser tanpa perlu instalasi. Cocok untuk sistem internal perusahaan, dashboard admin, manajemen data, dan solusi bisnis lainnya yang membutuhkan akses cepat, aman, dan skalabel.",
-      "service2": "Kami membantu bisnis beralih dari proses manual ke solusi digital, seperti otomatisasi alur kerja, integrasi sistem, dan digitalisasi dokumen. Hal ini memungkinkan perusahaan bekerja lebih efisien dan kompetitif di era modern.",
-      "service3": "Pengembangan aplikasi mobile untuk Android dan iOS dengan fokus pada performa, tampilan menarik, dan kemudahan penggunaan. Cocok untuk bisnis yang ingin menjangkau pengguna langsung melalui perangkat seluler.",
-      "service4": "Desain dan pengembangan halaman arahan (landing page) yang dirancang untuk menarik perhatian pengunjung dan mendorong tindakan tertentu, seperti mendaftar, membeli, atau mengunduh aplikasi. Umumnya digunakan dalam kampanye pemasaran dan peluncuran produk."
+      "serviceTitle1": "Pengembangan Sistem & Aplikasi Web",
+      "service1": "Kami buat software yang bisa langsung dipakai lewat browser tanpa perlu instalasi. Cocok untuk alat internal, dashboard, dan platform data supaya tim kamu kerja lebih cepat, aman, dan siap berkembang.",
+      "serviceTitle2": "Solusi Transformasi Digital",
+      "service2": "Bantu kamu tinggalkan kerja manual dengan otomatisasi proses, integrasi sistem, dan digitalisasi dokumen. Jadi kerjaan lebih ringan, proses lebih cepat, dan bisnis makin kompetitif.",
+      "serviceTitle3": "Pengembangan Aplikasi Mobile",
+      "service3": "Aplikasi mobile custom untuk Android dan iOS yang lancar dan menarik. Pas banget buat kamu yang mau jangkau pelanggan langsung lewat ponsel dengan pengalaman yang gampang dan menyenangkan.",
+      "serviceTitle4": "Desain & Pengembangan Landing Page",
+      "service4": "Kami buat landing page yang menarik dan efektif — untuk bikin orang daftar, beli produk, atau pakai aplikasi kamu. Cocok untuk kampanye marketing yang butuh hasil nyata."
     },
     "stack": {
       "title1": "Teknologi yang kita gunakan",
@@ -69,7 +73,7 @@
       }
     },
     "footer": {
-      "summarize": "Menyederhanakan teknologi, biar kamu bisa fokus ke hal yang paling penting.",
+      "summarize": "Making technology simple, so you can focus on what matters.",
       "service": "Layanan",
       "about": "Tentang Kami",
       "contact": "Tetap Terhubung",
