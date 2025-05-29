@@ -369,7 +369,7 @@ export default function HomePage() {
               <div className='w-16 h-2 bg-(--base-color) rounded-full'></div>
             </div>
             <div className="flex flex-wrap justify-center items-stretch items-center mt-12 gap-0 md:gap-16 w-full">
-              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFFEF9] rounded-none md:rounded-lg flex flex-col justify-between">
+              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFFEF9] rounded-none md:rounded-lg flex flex-col justify-between gap-6">
                 <div>
                   <h2 className='text-md font-medium'>{t('portofolio.portotitle1')}</h2>
                   <p className='text-sm mt-1 text-gray-500'>PT. Lapan Ecogreen Globalindo</p>
@@ -377,7 +377,7 @@ export default function HomePage() {
                 </div>
                 <Image src="/images/image-portofolio1.svg" alt="Image Portofolio ERP from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
-              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFEFFE] rounded-none md:rounded-lg flex flex-col justify-between">
+              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFEFFE] rounded-none md:rounded-lg flex flex-col justify-between gap-6">
                 <div>
                   <h2 className='text-md font-medium'>{t('portofolio.portotitle2')}</h2>
                   <p className='text-sm mt-1 text-gray-500'>Cucibayargo</p>
@@ -385,7 +385,7 @@ export default function HomePage() {
                 </div>
                 <Image src="/images/image-portofolio2.svg" alt="Image Portofolio Cashier Application from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
-              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFF9FE] rounded-none md:rounded-lg flex flex-col justify-between">
+              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFF9FE] rounded-none md:rounded-lg flex flex-col justify-between gap-6">
                 <div>
                   <h2 className='text-md font-medium'>{t('portofolio.portotitle3')}</h2>
                   <p className='text-sm mt-1 text-gray-500'>The Ritz Media Berlin</p>
@@ -393,7 +393,7 @@ export default function HomePage() {
                 </div>
                 <Image src="/images/image-portofolio3.svg" alt="Image Portofolio Landing Page from Byteik" width={0} height={0} style={{ width: 'auto', height: 'auto' }} />
               </div>
-              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFFEF7] rounded-none md:rounded-lg flex flex-col justify-between">
+              <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFFEF7] rounded-none md:rounded-lg flex flex-col justify-between gap-6">
                 <div>
                   <h2 className='text-md font-medium'>{t('portofolio.portotitle4')}</h2>
                   <p className='text-sm mt-1 text-gray-500'>Hilink</p>
@@ -411,7 +411,7 @@ export default function HomePage() {
               <h1 className='text-center font-bold text-xl'>{t('service.title1')}</h1>
               <div className='w-16 h-2 bg-(--base-color) rounded-full'></div>
             </div>
-            <div className='mt-12 w-full md:w-[65%] flex flex-col gap-4 bg-(--soft-base-color) p-10 rounded-lg'>
+            <div className='mt-12 w-full md:w-[65%] flex flex-col gap-4 bg-(--soft-base-color) p-10 rounded-none md:rounded-lg'>
               <div>
                 <h1 className='text-lg font-bold'>🧩 {t('service.serviceTitle1')}</h1>
                 <p className='mt-2 text-sm text-gray-600'>{t('service.service1')}</p>
@@ -549,7 +549,7 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <p className='text-sm text-gray-500'>{t('cta.form.policy')} <a href="https://www.termsfeed.com/live/1c56bf5c-9073-4c40-94cc-e76500708b5b" target='_blank' className='text-blue-400'>{t('cta.form.policyButton')}</a></p>
+              <p className='text-sm text-gray-500'>{t('cta.form.policy')} <a href="https://www.termsfeed.com/live/1c56bf5c-9073-4c40-94cc-e76500708b5b" target='_blank' className='text-blue-500 font-medium'>{t('cta.form.policyButton')}</a></p>
               <button
                 className="mt-6 w-full py-2 bg-(--base-color) hover:bg-(--hover-base-color) transition-colors text-white font-bold rounded-lg cursor-pointer"
                 onClick={handleSubmit}
@@ -578,10 +578,10 @@ export default function HomePage() {
                 <div className='w-full md:w-[35%]'>
                   <h1>{t('footer.service')}</h1>
                   <div className="flex flex-col gap-1 mt-4">
-                    <a href="#services" className='text-sm text-gray-500'>System Development</a>
-                    <a href="#services" className='text-sm text-gray-500'>Digital Transformation Solutions</a>
-                    <a href="#services" className='text-sm text-gray-500'>Mobile App Development</a>
-                    <a href="#services" className='text-sm text-gray-500'>Landing Page Design & Development</a>
+                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle1')}</a>
+                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle2')}</a>
+                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle3')}</a>
+                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle4')}</a>
                   </div>
                 </div>
                 <div className='w-full md:w-[35%]'>

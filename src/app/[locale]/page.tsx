@@ -1,4 +1,6 @@
-  import { getTranslations } from 'next-intl/server';
+export const runtime = "edge";
+  
+import { getTranslations } from 'next-intl/server';
   import HomePage from './component/home';
   import type { Metadata } from 'next';
 
