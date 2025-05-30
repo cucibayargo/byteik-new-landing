@@ -54,9 +54,6 @@ import { getTranslations } from 'next-intl/server';
         description: t('seo.description'),
         images: ['https://byteik.com/images/og.png'],
       },
-      icons: {
-        icon: 'https://byteik.com/favicon.ico',
-      },      
       metadataBase: new URL('https://byteik.com'),
     };
   }
