@@ -578,17 +578,18 @@ export default function HomePage() {
                 <div className='w-full md:w-[35%]'>
                   <h1>{t('footer.service')}</h1>
                   <div className="flex flex-col gap-1 mt-4">
-                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle1')}</a>
-                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle2')}</a>
-                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle3')}</a>
-                    <a href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle4')}</a>
+                    <Link href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle1')}</Link>
+                    <Link href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle2')}</Link>
+                    <Link href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle3')}</Link>
+                    <Link href="#services" className='text-sm text-gray-500'>{t('service.serviceTitle4')}</Link>
                   </div>
                 </div>
                 <div className='w-full md:w-[35%]'>
                   <h1>{t('footer.about')}</h1>
                   <div className="flex flex-col gap-1 mt-4">
-                    <a href="#whyus" className='text-sm text-gray-500'>{t('footer.whyus')}</a>
-                    <a href="#technologies" className='text-sm text-gray-500'>{t('footer.stack')}</a>
+                    <Link href="#whyus" className='text-sm text-gray-500'>{t('footer.whyus')}</Link>
+                    <Link href="#technologies" className='text-sm text-gray-500'>{t('footer.stack')}</Link>
+                    <Link href="https://medium.com/@byteik" target='_blank' className='text-sm text-gray-500'>{t('footer.article')}</Link>
                   </div>
                 </div>
                 <div className='w-full md:w-[35%]'>
@@ -602,7 +603,7 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <a href="https://www.instagram.com/byteik" className='text-sm text-gray-500'>@byteik</a>
+                      <Link href="https://www.instagram.com/byteik" target="_blank" className='text-sm text-gray-500'>@byteik</Link>
                     </div>
                     {/* <div className='flex items-center gap-2'>
                       <Image
@@ -612,17 +613,14 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <a href="https://www.instagram.com/" className='text-sm text-gray-500'>Byteik Indonesia</a>
+                      <Link href="https://www.instagram.com/" className='text-sm text-gray-500'>Byteik Indonesia</Link>
                     </div> */}
                     <div className='flex items-center gap-2'>
-                      <Image
-                        src="/images/email.svg"
-                        alt="Company Email Byteik"
-                        width={15}
-                        height={15}
-                        style={{ height: '15px', width: 'auto' }}
-                      />
-                      <a href="mailto:info.byteik@gmail.com" className="text-sm text-gray-500">info.byteik@gmail.com</a>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                      </svg>
+                      <Link href="mailto:info.byteik@gmail.com" className="text-sm text-gray-500">info.byteik@gmail.com</Link>
                     </div>
                   </div>
                 </div>

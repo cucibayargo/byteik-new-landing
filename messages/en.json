@@ -9,7 +9,7 @@
       "whyus": "Why Us ?",
       "solutions": "Solutions",
       "portfolio": "Portfolio",
-      "stack": "Tech Stack",
+      "stack": "Technologies",
       "letstalk": "Let's Talk"
     },
     "hero": {
@@ -78,7 +78,8 @@
       "about": "About Us",
       "contact": "Keep in Touch",
       "whyus": "Why Us ?",
-      "stack": "Our Technologies"
+      "stack": "Our Technologies",
+      "article": "Blog"
     }
   }
 }
