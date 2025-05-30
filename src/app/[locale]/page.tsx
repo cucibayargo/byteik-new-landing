@@ -54,6 +54,14 @@ import { getTranslations } from 'next-intl/server';
         description: t('seo.description'),
         images: ['https://byteik.com/images/og.png'],
       },
+      icons: {
+        icon: [
+          { url: 'https://byteik.com/favicon.ico', type: 'image/x-icon', rel: "icon"},
+          { url: 'https://byteik.com/images/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+          { url: 'https://byteik.com/images/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+          { url: 'https://byteik.com/images/apple-touch-icon.png', sizes: '180x180', rel: 'apple-touch-icon' },
+        ],
+      },
       metadataBase: new URL('https://byteik.com'),
     };
   }
