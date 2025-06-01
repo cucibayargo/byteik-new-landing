@@ -609,7 +609,7 @@ export default function HomePage() {
                       />
                       <Link href="https://www.instagram.com/byteik" target="_blank" className='text-sm text-gray-500'>@byteik</Link>
                     </div>
-                    {/* <div className='flex items-center gap-2'>
+                    <div className='flex items-center gap-2'>
                       <Image
                         src="/images/linkedin.svg"
                         alt="Company Linkedin Byteik"
@@ -617,8 +617,8 @@ export default function HomePage() {
                         height={15}
                         style={{ height: '15px', width: 'auto' }}
                       />
-                      <Link href="https://www.instagram.com/" className='text-sm text-gray-500'>Byteik Indonesia</Link>
-                    </div> */}
+                      <Link href="https://www.linkedin.com/company/byteik-solutions" className='text-sm text-gray-500'>Byteik</Link>
+                    </div>
                     <div className='flex items-center gap-2'>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4">
                         <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
