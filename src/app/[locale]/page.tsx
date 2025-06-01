@@ -32,6 +32,21 @@ import { getTranslations } from 'next-intl/server';
           'x-default': 'https://byteik.com',
         },
       },
+      keywords: [
+        'byteik',
+        'byteik tech',
+        'byteik digital solutions',
+        'software development agency',
+        'web app development',
+        'custom software solutions',
+        'next.js experts',
+        'indonesia web development',
+        'startup tech partner',
+        'byteik indonesia',
+        'hire developers',
+        'byteik portfolio',
+        'tech startup builder'
+      ],      
       openGraph: {
         type: 'website',
         url: localizedCanonical,

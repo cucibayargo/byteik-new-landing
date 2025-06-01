@@ -379,7 +379,11 @@ export default function HomePage() {
               </div>
               <div className="w-full md:w-[40%] px-10 py-10 bg-[#EFEFFE] rounded-none md:rounded-lg flex flex-col justify-between gap-6">
                 <div>
-                  <h2 className='text-md font-medium'>{t('portofolio.portotitle2')}</h2>
+                  <h2 className='text-md font-medium cursor-pointer'>
+                    <a href="https://cucibayargo.com" target="_blank" rel="noopener noreferrer">
+                      {t('portofolio.portotitle2')}
+                    </a>
+                  </h2>
                   <p className='text-sm mt-1 text-gray-500'>Cucibayargo</p>
                   <p className='mt-6 text-sm text-gray-600'>{t('portofolio.porto2')}</p>
                 </div>
